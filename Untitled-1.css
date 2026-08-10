@@ -898,3 +898,32 @@ header p {
         font-size: 1.3rem;
     }
 }
+header {
+    background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
+                url('https://th.bing.com/th/id/OIP.paFUEz_xo1yvbDY5L8E09AHaEK?w=321&h=180&c=7&r=0&o=7&pid=1.7&rm=3');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff !important;
+    text-align: center;
+    padding: 100px 20px;
+}
+/* ስክሪኑ ከ 768px በታች ሲሆን (ለስልኮች) */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  /* ሜኑዎችና ሳጥኖች በጎን ከሚሆኑ ወደ ታች እንዲደረደሩ */
+  .container, .nav-menu, .card-wrapper {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* ምስሎች ከስክሪኑ እንዳይወጡ */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
