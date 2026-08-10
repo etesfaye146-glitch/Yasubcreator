@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yasub Website Creator | ዘመናዊ የዌብሳይት ልማት አገልግሎት</title>
+    <meta name="description" content="Yasub Website Creator - ለድርጅትዎ ወይም ለግል ንግድዎ የሚሆን ማራኪ፣ ፈጣን እና ዘመናዊ ዌብሳይት በተመጣጣኝ ዋጋ እንሰራለን።">
+    <meta name="keywords" content="Yasub Website Creator, የዌብሳይት መስሪያ, Website Design Ethiopia, ዌብሳይት ዲዛይን, ዌብሳይት ልማት">
+    <meta name="author" content="Yasub Website Creator">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://fav.farm/🌐">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Social Media Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Yasub Website Creator | ዘመናዊ የዌብሳይት ልማት አገልግሎት">
+    <meta property="og:description" content="ለድርጅትዎ ወይም ለግል ንግድዎ የሚሆን ማራኪ፣ ፈጣን እና ዘመናዊ ዌብሳይት በተመጣጣኝ ዋጋ እንሰራለን።">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Noto Sans Ethiopic', sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #2563eb, #3b82f6, #60a5fa, #2563eb);
+            z-index: 9999;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        body {
+            background-color: #f8fafc !important;
+            color: #0f172a !important;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        header {
+            position: relative;
+            background: linear-gradient(rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.82)), 
+                        url('https://th.bing.com/th/id/OIP.paFUEz_xo1yvbDY5L8E09AHaEK?w=321&h=180&c=7&r=0&o=7&pid=1.7&rm=3');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #ffffff !important;
+            text-align: center;
+            padding: 120px 20px 110px 20px;
+            border-bottom: 4px solid #2563eb;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            color: #ffffff !important;
+            font-weight: 800 !important;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+            letter-spacing: 0.5px;
+        }
+
+        header h2 {
+            font-size: 1.6rem;
+            color: #93c5fd !important;
+            font-weight: 700 !important;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            color: #f1f5f9 !important;
+            font-size: 1.15rem;
+            font-weight: 600 !important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffffff, #f1f5f9) !important;
+            color: #1d4ed8 !important;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 800 !important;
+            margin-top: 25px;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            border: 2px solid #ffffff;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+            background: #ffffff !important;
+        }
+
+        section {
+            padding: 65px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.1rem;
+            color: #0f172a !important;
+            font-weight: 800 !important;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, #2563eb, #60a5fa);
+            border-radius: 4px;
+        }
+
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            list-style: none !important;
+            padding: 0 !important;
+        }
+
+        .services-list li {
+            background-color: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            border-top: 4px solid #2563eb !important;
+            border-radius: 14px;
+            padding: 30px 25px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.04);
+        }
+
+        .services-list h3 {
+            color: #1e3a8a !important;
+            font-size: 1.3rem;
+            font-weight: 800 !important;
+            margin-bottom: 12px;
+        }
+
+        .services-list p {
+            color: #334155 !important;
+            font-weight: 600 !important;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .price-card {
+            background-color: #ffffff !important;
+            border: 1px solid #cbd5e1 !important;
+            border-top: 4px solid #94a3b8 !important;
+            border-radius: 16px;
+            padding: 35px 22px;
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.04);
+        }
+
+        .price-card.featured {
+            border: 2px solid #2563eb !important;
+            border-top: 6px solid #2563eb !important;
+            transform: scale(1.02);
+        }
+
+        .price-card h3 {
+            color: #0f172a !important;
+            font-size: 1.4rem;
+            font-weight: 800 !important;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 2.1rem;
+            font-weight: 800 !important;
+            color: #2563eb !important;
+            margin-bottom: 15px;
+        }
+
+        .price-card p {
+            color: #334155 !important;
+            font-weight: 600 !important;
+            margin-bottom: 20px;
+        }
+
+        .pay-btn {
+            display: inline-block;
+            width: 100%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #ffffff !important;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 800;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+        }
+
+        .pay-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            background-color: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            border-top: 5px solid #2563eb !important;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        }
+
+        .contact-info h2, .contact-form-box h3 {
+            text-align: left;
+            color: #0f172a !important;
+            font-weight: 800 !important;
+            margin-bottom: 15px;
+        }
+
+        .info-list li {
+            list-style: none !important;
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+            color: #0f172a !important;
+            font-weight: 600 !important;
+        }
+
+        .info-list a {
+            color: #2563eb !important;
+            font-weight: 700 !important;
+            text-decoration: none;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-form input, .contact-form select, .contact-form textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600 !important;
+            background-color: #f8fafc;
+            color: #0f172a !important;
+        }
+
+        .contact-form button {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #ffffff !important;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 800 !important;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #0f172a;
+            color: #ffffff !important;
+            font-weight: 700 !important;
+            margin-top: 50px;
+            border-top: 4px solid #2563eb;
+        }
+
+        .float-telegram {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, #0088cc, #006699);
+            color: #ffffff !important;
+            padding: 14px 24px;
+            border-radius: 30px;
+            font-weight: 800 !important;
+            text-decoration: none;
+            box-shadow: 0 6px 18px rgba(0, 136, 204, 0.4);
+            z-index: 999;
+            border: 2px solid #ffffff;
+        }
+
+        .theme-toggle-btn {
+            position: fixed;
+            top: 18px;
+            right: 20px;
+            z-index: 10000;
+            background-color: #0f172a;
+            color: #ffffff !important;
+            border: 2px solid #ffffff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 800 !important;
+            cursor: pointer;
+        }
+
+        body.dark-mode {
+            background-color: #0b1120 !important;
+            color: #ffffff !important;
+        }
+
+        body.dark-mode h2 { color: #ffffff !important; }
+
+        body.dark-mode .services-list li,
+        body.dark-mode .price-card,
+        body.dark-mode .contact-container {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="theme-btn" class="theme-toggle-btn">🌙 Dark Mode</button>
+
+    <header>
+        <h1>Yasub Website Creator</h1>
+        <h2>ዘመናዊ የዌብሳይት ልማት አገልግሎት</h2>
+        <p>ለድርጅትዎ ወይም ለግል ንግድዎ የሚሆን ማራኪና ፈጣን ዌብሳይት እንሰራለን!</p>
+        <a href="#contact-wrapper" class="btn-primary">አሁኑኑ ያናግሩን</a>
+    </header>
+
+    <section id="services">
+        <h2>የምንሰጣቸው አገልግሎቶች (Services)</h2>
+        <ul class="services-list">
+            <li class="reveal">
+                <h3>🌐 የንግድ ዌብሳይቶች (Business Websites)</h3>
+                <p>ለድርጅትዎ፣ ለካፌ፣ ለሬስቶራንት ወይም ለተለያዩ አገልግሎቶች ማስተዋወቂያ የሚሆኑ ባለብዙ ገጽ ዌብሳይቶች።</p>
+            </li>
+            <li class="reveal">
+                <h3>📱 ለስልክ የተመቻቹ (Responsive Design)</h3>
+                <p>ዌብሳይትዎ በስልክ፣ በታብሌትና በኮምፒውተር ላይ በትክክልና በሚያምር ሁኔታ እንዲታይ ተደርጎ የሚሰራ።</p>
+            </li>
+            <li class="reveal">
+                <h3>⚡ ፈጣንና አስተማማኝ (Fast & Secure)</h3>
+                <p>በከፍተኛ ፍጥነት የሚከፈቱና አስተማማኝ ደህንነት ያላቸው የዌብሳይት ገፆች።</p>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <h2>የአገልግሎት ፓኬጆች እና የክፍያ አማራጮች</h2>
+        <div class="pricing-grid">
+            
+            <div class="price-card reveal">
+                <h3>መሰረታዊ (Basic)</h3>
+                <div class="price">3,000 ETB</div>
+                <p>ባለ 1 ገጽ ማስተዋወቂያ (Landing Page)፣ የሶሻል ሚዲያ ሊንኮች እና የስልክ አድራሻ ያካተተ።</p>
+                <button class="pay-btn" onclick="initiatePayment('Basic', 3000)">በ ቴሌብር (Telebirr) ክፈል 📱</button>
+            </div>
+
+            <div class="price-card featured reveal">
+                <h3>መካከለኛ (Standard) ⭐</h3>
+                <div class="price">4,500 ETB</div>
+                <p>ባለ 3-5 ገጽ ዌብሳይት፣ የመልእክት መላኪያ ፎርም፣ የካርታ አድራሻ እና የቴሌግራም ግንኙነት።</p>
+                <button class="pay-btn" onclick="initiatePayment('Standard', 4500)">በ ቴሌብር (Telebirr) ክፈል 📱</button>
+            </div>
+
+            <div class="price-card reveal">
+                <h3>ሙሉ (Premium)</h3>
+                <div class="price">6,000 ETB</div>
+                <p>ባለብዙ ገጽ ዌብሳይት፣ የፖርትፎሊዮ ገጽ፣ SEO ማስተካከያ እና የ 1 ወር ነፃ የቴክኒክ ድጋፍ።</p>
+                <button class="pay-btn" onclick="initiatePayment('Premium', 6000)">በ ቴሌብር (Telebirr) ክፈል 📱</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact-wrapper">
+        <div class="contact-container reveal">
+            <div class="contact-info">
+                <h2>ያግኙኝ 📞</h2>
+                <p>ለማንኛውም አይነት የዌብሳይት ስራ ጥያቄ ወይም መረጃ በስልክ፣ በኢሜይል ወይም በቴሌግራም ማናገር ይችላሉ።</p>
+                <ul class="info-list">
+                    <li>📞 <strong>ስልክ (ቴሌብር):</strong> <a href="tel:+251911642184">0911642184</a></li>
+                    <li>✉️ <strong>ኢሜይል:</strong> <a href="mailto:yasub9506@gmail.com">yasub9506@gmail.com</a></li>
+                    <li>✈️ <strong>ቴሌግራም:</strong> <a href="https://t.me/eobed12321" target="_blank">@eobed12321</a></li>
+                    <li>📍 <strong>አድራሻ:</strong> አዲስ አበባ፣ ኢትዮጵያ</li>
+                </ul>
+            </div>
+
+            <div class="contact-form-box">
+                <h3>መልእክት ይላኩ</h3>
+                <!-- Formspree with your Form ID (mzepbdrd) -->
+                <form class="contact-form" action="https://formspree.io/f/mzepbdrd" method="POST">
+                    <input type="text" name="name" placeholder="ስምዎን ያስገቡ" required>
+                    <input type="email" name="_replyto" placeholder="ኢሜይልዎን ያስገቡ" required>
+                    <select name="service" required>
+                        <option value="">የሚፈልጉትን አገልግሎት ይምረጡ...</option>
+                        <option value="Basic">መሰረታዊ ፓኬጅ (3,000 ETB)</option>
+                        <option value="Standard">መካከለኛ ፓኬጅ (4,500 ETB)</option>
+                        <option value="Premium">ሙሉ ፓኬጅ (6,000 ETB)</option>
+                    </select>
+                    <textarea name="message" rows="4" placeholder="መልእክትዎን እዚህ ይፃፉ..." required></textarea>
+                    <button type="submit">መልእክት ላክ ✉️</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://t.me/eobed12321" target="_blank" class="float-telegram">💬 በቴሌግራም ያናግሩን</a>
+
+    <footer>
+        <p>&copy; 2026 Yasub Website Creator. መብቱ በህግ የተጠበቀ ነው።</p>
+    </footer>
+
+    <!-- JavaScript logic -->
+    <script>
+        const myTelebirrPhone = "0911642184";
+        const myTelegramUsername = "eobed12321";
+
+        // Theme Toggle
+        const themeBtn = document.getElementById('theme-btn');
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            themeBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
+        });
+
+        // Scroll Reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            reveals.forEach(el => {
+                if (el.getBoundingClientRect().top < windowHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // TELEBIRR PAYMENT FUNCTIONALITY
+        function initiatePayment(packageName, amount) {
+            const userChoice = confirm(
+                `የ ${packageName} ፓኬጅ (${amount} ETB) መርጠዋል።\n\n` +
+                `የቴሌብር ቁጥር፡ ${myTelebirrPhone}\n\n` +
+                `1. "OK" ሲሉ የቴሌብር መተግበሪያ ይከፈታል።\n` +
+                `2. ክፍያውን ፈጽመው ደረሰኙን በቴሌግራም እንዲልኩልን ገጹ በቀጥታ ይመራዎታል።`
+            );
+            
+            if (userChoice) {
+                window.location.href = "telebirr://";
+
+                setTimeout(() => {
+                    const textMessage = encodeURIComponent(
+                        `ሰላም! የ ${packageName} ፓኬጅ በ ${amount} ETB በቴሌብር (ወደ ${myTelebirrPhone}) ክፍያ ፈፅሜያለሁ። የክፍያ ደረሰኙ ከታች ይገኛል፡`
+                    );
+                    window.location.href = `https://t.me/${myTelegramUsername}?text=${textMessage}`;
+                }, 2000);
+            }
+        }
+    </script>
+</body>
+</html>
