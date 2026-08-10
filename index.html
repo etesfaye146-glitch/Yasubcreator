@@ -328,20 +328,84 @@
             border: 2px solid #ffffff;
         }
 
-        .theme-toggle-btn {
+        /* TOP-RIGHT HEADER CONTROL BAR */
+        .top-controls {
             position: fixed;
             top: 18px;
-            right: 20px;
+            right: 20px; /* በቀኝ በኩል ተደርጓል */
             z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-toggle-btn {
             background-color: #0f172a;
             color: #ffffff !important;
-            border: 2px solid #ffffff;
-            padding: 10px 20px;
+            border: 2px solid #2563eb;
+            padding: 8px 16px;
             border-radius: 25px;
             font-weight: 800 !important;
             cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        /* CUSTOM GOOGLE TRANSLATE STYLING */
+        .translate-wrapper {
+            background: #ffffff;
+            padding: 4px 10px 4px 12px;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+            border: 2px solid #2563eb;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            height: 42px;
+            overflow: hidden;
+        }
+
+        .translate-wrapper::before {
+            content: '🌐';
+            font-size: 1.1rem;
+        }
+
+        /* Clean up Google's default dropdown */
+        .goog-te-gadget {
+            font-family: 'Noto Sans Ethiopic', sans-serif !important;
+            font-size: 0px !important;
+            color: transparent !important;
+        }
+
+        .goog-te-gadget .goog-te-combo {
+            background-color: transparent !important;
+            color: #0f172a !important;
+            border: none !important;
+            font-size: 0.9rem !important;
+            font-weight: 700 !important;
+            padding: 4px 2px !important;
+            outline: none !important;
+            cursor: pointer;
+        }
+
+        /* Hide Top Banner pushed by Google */
+        .goog-te-banner-frame.skiptranslate, 
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+        
+        body {
+            top: 0px !important;
+        }
+
+        .goog-te-gadget span {
+            display: none !important;
+        }
+
+        /* DARK MODE STYLES */
         body.dark-mode {
             background-color: #0b1120 !important;
             color: #ffffff !important;
@@ -356,60 +420,47 @@
             border-color: #334155 !important;
         }
 
-        /* ----- ለስልክ ዲዛይን የተጨመረ (MOBILE RESPONSIVE CSS) ----- */
+        body.dark-mode .translate-wrapper {
+            background: #0f172a;
+            border-color: #3b82f6;
+        }
+
+        body.dark-mode .goog-te-gadget .goog-te-combo {
+            color: #ffffff !important;
+        }
+
+        body.dark-mode .theme-toggle-btn {
+            background-color: #1e293b;
+            border-color: #60a5fa;
+        }
+
+        /* Mobile Adaptations */
         @media (max-width: 768px) {
-            header {
-                padding: 90px 15px 70px 15px;
-            }
-
-            header h1 {
-                font-size: 2.1rem;
-            }
-
-            header h2 {
-                font-size: 1.3rem;
-            }
-
-            header p {
-                font-size: 1rem;
-            }
-
-            section {
-                padding: 40px 15px;
-            }
-
-            h2 {
-                font-size: 1.7rem;
-            }
-
-            .price-card.featured {
-                transform: none; /* በስልክ ላይ ትልቅ ሆኖ እንዳይወጣ */
-            }
-
-            .contact-container {
-                padding: 25px 18px;
-                grid-template-columns: 1fr; /* በስልክ ላይ ፎርሙ እና አድራሻው ወደ ታች እንዲደረደሩ */
-            }
-
-            .float-telegram {
-                bottom: 15px;
-                right: 15px;
-                padding: 10px 18px;
-                font-size: 0.9rem;
-            }
-
-            .theme-toggle-btn {
-                top: 12px;
-                right: 12px;
-                padding: 8px 14px;
-                font-size: 0.85rem;
-            }
+            header { padding: 90px 15px 70px 15px; }
+            header h1 { font-size: 2.1rem; }
+            header h2 { font-size: 1.3rem; }
+            header p { font-size: 1rem; }
+            section { padding: 40px 15px; }
+            h2 { font-size: 1.7rem; }
+            .price-card.featured { transform: none; }
+            .contact-container { padding: 25px 18px; grid-template-columns: 1fr; }
+            .float-telegram { bottom: 15px; right: 15px; padding: 10px 18px; font-size: 0.9rem; }
+            .top-controls { top: 12px; right: 12px; gap: 6px; }
+            .theme-toggle-btn { padding: 6px 12px; font-size: 0.8rem; height: 36px; }
+            .translate-wrapper { padding: 2px 8px; height: 36px; }
+            .goog-te-gadget .goog-te-combo { font-size: 0.8rem !important; }
         }
     </style>
 </head>
 <body>
 
-    <button id="theme-btn" class="theme-toggle-btn">🌙 Dark Mode</button>
+    <!-- TOP-RIGHT CONTAINER FOR BOTH CONTROLS -->
+    <div class="top-controls">
+        <button id="theme-btn" class="theme-toggle-btn">🌙 Dark Mode</button>
+        <div class="translate-wrapper">
+            <div id="google_translate_element"></div>
+        </div>
+    </div>
 
     <header>
         <h1>Yasub Website Creator</h1>
@@ -481,7 +532,6 @@
 
             <div class="contact-form-box">
                 <h3>መልእክት ይላኩ</h3>
-                <!-- Formspree with your Form ID (mzepbdrd) -->
                 <form class="contact-form" action="https://formspree.io/f/mzepbdrd" method="POST">
                     <input type="text" name="name" placeholder="ስምዎን ያስገቡ" required>
                     <input type="email" name="_replyto" placeholder="ኢሜይልዎን ያስገቡ" required>
@@ -504,7 +554,19 @@
         <p>&copy; 2026 Yasub Website Creator. መብቱ በህግ የተጠበቀ ነው።</p>
     </footer>
 
-    <!-- JavaScript logic -->
+    <!-- GOOGLE TRANSLATE SCRIPT -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'am',
+                layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- General JavaScript logic -->
     <script>
         const myTelebirrPhone = "0911642184";
         const myTelegramUsername = "eobed12321";
